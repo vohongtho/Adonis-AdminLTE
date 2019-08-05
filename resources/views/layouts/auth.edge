@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta http-equiv="content-type" content="text/html;charset=UTF-8" />
+  <meta charset="utf-8" />
+  <title>Adonis AdminLTE</title>
+  <!-- Template CSS -->
+  {{ style('app') }}
+
+</head>
+<body class="hold-transition login-page">
+    <!-- Main content -->
+    @include('partials/auth/flash')
+    @!section('content')
+    <!-- /.content -->
+    <!-- /.login-box -->
+    {{ script('main') }}
+  <script>
+      $(function () {
+        $('input').iCheck({
+          checkboxClass: 'icheckbox_square-blue',
+          radioClass: 'iradio_square-blue',
+          increaseArea: '20%' /* optional */
+        });
+      });
+    </script>
+</body>
+</html>
+

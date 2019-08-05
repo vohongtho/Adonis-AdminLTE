@@ -1,0 +1,22 @@
+$fa-font-path : "~font-awesome/fonts";
+@import "~font-awesome/scss/font-awesome.scss";
+// @import "~@fortawesome/fontawesome-free/scss/solid.scss";
+// @import "~@fortawesome/fontawesome-free/scss/regular.scss";
+// @import "~@fortawesome/fontawesome-free/scss/brands.scss";
+// @import "~@fortawesome/fontawesome-free/scss/brands.scss";
+@import "~bootstrap/dist/css/bootstrap.css";
+
+$ionicons-font-path: "~ionicons/dist/fonts";
+@import "~ionicons/dist/scss/ionicons-variables.scss";
+@import "~ionicons/dist/scss/ionicons-core.scss";
+@import "~ionicons/dist/scss/ionicons.scss";
+@import "~ionicons/dist/scss/ionicons-common.scss";
+@import "~admin-lte/dist/css/AdminLTE.css";
+@import "~admin-lte/plugins/iCheck/square/blue.css";
+@import "~admin-lte/dist/css/skins/_all-skins.css";
+@import "~morris.js/morris.css";
+@import "~jvectormap/jquery-jvectormap.css";
+@import "~bootstrap-datepicker/dist/css/bootstrap-datepicker.css";
+@import "~bootstrap-daterangepicker/daterangepicker.css";
+@import "~admin-lte/plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.css";
+@import url("https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic");
