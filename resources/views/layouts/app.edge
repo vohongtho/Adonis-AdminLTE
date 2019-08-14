@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta http-equiv="content-type" content="text/html;charset=UTF-8" />
   <meta charset="utf-8" />
@@ -10,36 +11,39 @@
 
   <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
 
+  {{ script('main') }}
+
 </head>
+
 <body class="hold-transition skin-blue sidebar-mini">
+  @include('partials/app/flash')
+
   <div class="wrapper">
 
-  <!-- Navbar -->
-  @include('partials/app/header')
+    <!-- Navbar -->
+    @include('partials/app/header')
+    <!-- /.navbar -->
 
-  <!-- /.navbar -->
+    <!-- Main Sidebar Container -->
+    @include('partials/app/sidebar')
+    <!-- Content Wrapper. Contains page content -->
+    <div class="content-wrapper">
+      <!-- Content Header (Page header) -->
+      @include('partials/app/breadcrumb')
+      <!-- /.content-header -->
 
-  <!-- Main Sidebar Container -->
-  @include('partials/app/sidebar')
+      <!-- Main content -->
+      @!section('content')
+      <!-- /.content -->
+    </div>
+    <!-- /.content-wrapper -->
 
-  <!-- Content Wrapper. Contains page content -->
-  <div class="content-wrapper">
-    <!-- Content Header (Page header) -->
-    @include('partials/app/breadcrumb')
-    <!-- /.content-header -->
-
-    <!-- Main content -->
-    @!section('content')
-    <!-- /.content -->
-  </div>
-  <!-- /.content-wrapper -->
-
-  <!--footer -->
-  @include('partials/app/footer')
+    <!--footer -->
+    @include('partials/app/footer')
 
 
-  <!-- Control Sidebar -->
-  <aside class="control-sidebar control-sidebar-dark" style="display: none;">
+    <!-- Control Sidebar -->
+    <aside class="control-sidebar control-sidebar-dark" style="display: none;">
       <!-- Create the tabs -->
       <ul class="nav nav-tabs nav-justified control-sidebar-tabs">
         <li><a href="#control-sidebar-home-tab" data-toggle="tab"><i class="fa fa-home"></i></a></li>
@@ -231,16 +235,16 @@
     <!-- Add the sidebar's background. This div must be placed
          immediately after the control sidebar -->
     <div class="control-sidebar-bg"></div>
-</div>
-<!-- ./wrapper -->
+  </div>
+  <!-- ./wrapper -->
 
   <!-- General JS Scripts -->
   {{--  <script src="https://cdnjs.cloudflare.com/ajax/libs/raphael/2.1.0/raphael-min.js" asp-append-version="true"></script>  --}}
 
-  {{ script('main') }}
-
   <script>
     $.widget.bridge('uibutton', $.ui.button)
+
   </script>
 </body>
+
 </html>

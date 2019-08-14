@@ -53,6 +53,10 @@ package-lock.json
 # Output of 'npm pack'
 *.tgz
 
+# Babel can be configured! Many other tools have similar configs: ESLint (.eslintrc), Prettier (.prettierrc).
+.babelrc
+
+
 # Yarn Integrity file
 .yarn-integrity
 

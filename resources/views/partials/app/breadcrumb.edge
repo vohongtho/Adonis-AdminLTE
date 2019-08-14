@@ -1,10 +1,23 @@
 <section class="content-header">
-    <h1>
-      Dashboard
-      <small>Control panel</small>
-    </h1>
-    <ol class="breadcrumb">
-      <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
-      <li class="active">Dashboard</li>
-    </ol>
-  </section>
+  <h1>
+    {{title}}
+    {{--  <small>Control panel</small>  --}}
+  </h1>
+  @if(breadcrumb)
+  <ol class="breadcrumb">
+
+    @each( item in breadcrumb )
+    <li class="{{item.class}}">
+      <a href="{{item.url}}">
+        @if(item.icon)
+        <i class="fa {{item.icon}}"></i>
+        @endif
+        {{ item.name}}</a>
+
+    </li>
+    @endeach
+
+  </ol>
+
+  @endif
+</section>

@@ -1,5 +1,10 @@
 // jQuery
 window.$ = window.jQuery = require('jquery');
+// const API from import('./constants/api.js');
+import * as SYSTEMCONST from './constants/api';
+import { http} from './core/http-service/http-service';
+// require('./core/http-service/http-service.js');
+
 require('nicescroll');
 require('admin-lte/plugins/jQueryUI/jquery-ui.js');
 
@@ -19,6 +24,7 @@ require('bootstrap-datepicker/dist/js/bootstrap-datepicker.js');
 // require('admin-lte/plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.all.js');
 require('jquery-slimscroll/jquery.slimscroll.js');
 require('fastclick/lib/fastclick.js');
+require('select2/dist/js/select2.full.js');
 require('admin-lte/dist/js/adminlte.js');
 require('./dashboard');
 // require('./demo.js');
@@ -36,4 +42,6 @@ require('./dashboard');
 // require('admin-lte/dist/js/pages/dashboard2');
 // require('admin-lte/dist/js/demo');
 require('icheck/icheck.js');
+require('./components/user/manage/index');
+
 import '../style/app.scss';

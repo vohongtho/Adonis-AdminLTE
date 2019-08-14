@@ -1,0 +1,57 @@
+@layout('layouts/app')
+@section('content')
+<section class="content">
+  <div class="row">
+    <div class="col-xs-12">
+      <div class="box">
+        <div class="box-header ui-sortable-handle" style="">
+
+          <h3 class="box-title"></h3>
+          <!-- tools box -->
+          <div class="pull-right box-tools">
+            <a href="{{route('userAdd')}}" class="btn btn-block btn-success">
+              Create user</a>
+          </div>
+          <!-- /. tools -->
+        </div>
+        <!-- /.box-header -->
+        <div class="box-body">
+          <table id="example2" class="table table-bordered table-hover">
+            <thead>
+              <tr>
+                <th> Email</th>
+                <th>Full Name</th>
+                <th>Role</th>
+                <th> Last Login</th>
+                <th with="120px" class="text-center"> Action</th>
+              </tr>
+            </thead>
+            <tbody>
+              @if(users)
+              @each( item in users )
+
+              <tr>
+                <td>{{item.email}}</td>
+                <td>{{item.last_name}}</td>
+                <td>{{item.role}}</td>
+                <td>{{item.updated_at}}</td>
+                <td class="text-center">
+                  <a href="{{route('userEdit', { id: 1 })}}" class="btn btn-info btn-flat"><i
+                      class="fa  fa-pencil"></i></a>
+                  <a class="btn btn-danger btn-flat"><i class="fa  fa-remove"></i></a>
+                </td>
+              </tr>
+              @endeach
+              @endif
+            </tbody>
+
+          </table>
+        </div>
+        <!-- /.box-body -->
+      </div>
+    </div>
+  </div>
+  <!-- /.col -->
+
+</section>
+@endsection

@@ -1,0 +1,84 @@
+@layout('layouts/app')
+@section('content')
+<section class="content">
+  <div class="row">
+    <div class="col-xs-12">
+      <div class="box box-primary">
+        <div class="box-header">
+        </div>
+        <div class="box-body">
+          <div class="row">
+            <div class="col-xs-6">
+              <div class="form-group">
+                <label>Email</label>
+                <div class="input-group">
+                  <div class="input-group-addon">
+                    <i class="fa  fa-envelope"></i>
+                  </div>
+                  <input type="text" class="form-control" name="email" >
+                </div>
+                <!-- /.input group -->
+              </div>
+              <div class="form-group">
+                <label>Full Name</label>
+
+                <div class="input-group">
+                  <div class="input-group-addon">
+                    <i class="fa  fa-info"></i>
+                  </div>
+                  <input type="text" name="lastName" class="form-control" >
+                </div>
+                <!-- /.input group -->
+              </div>
+            </div>
+            <div class="col-xs-6">
+              <!-- Date dd/mm/yyyy -->
+              <!-- /.form group -->
+              @if(phoneCode)
+              <!-- Date mm/dd/yyyy -->
+              <div class="form-group">
+                <label>Phone Number
+                </label>
+                <div class="row">
+                  <div class="col-xs-5">
+                    <select name="phoneCode" class="form-control select2" style="width: 100%;">
+                      @each( item in phoneCode )
+                      <option {{item.dial_code =='+84'?'selected':''}} value="{{item.dial_code}}">
+                        ({{item.dial_code}}) {{item.name}}</option>
+                      @endeach
+                    </select>
+                  </div>
+                  <div class="col-xs-7">
+                    <input type="text" class="form-control" name="phoneNumber" >
+                  </div>
+                </div>
+                <!-- /.input group -->
+              </div>
+              <!-- /.form group -->
+              @endif
+
+            </div>
+          </div>
+        </div>
+        <div class="box-footer">
+          <!-- tools box -->
+          <div class="pull-right box-tools">
+
+            <button type="submit" class="btn btn-block btn-success btn-flat">Save</button>
+
+          </div>
+          <!-- /. tools -->
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<script>
+  $(function () {
+    // $.userManage.getPhoneCode();
+       //Initialize Select2 Elements
+       $('.select2').select2()
+  });
+
+</script>
+@endsection

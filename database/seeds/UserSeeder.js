@@ -24,7 +24,7 @@ class UserSeeder {
         provider: 'local',
         first_name: 'Admin',
         last_name: 'admin',
-        email: 'admin@adminlte.com',
+        email: 'adminlte@yopmail.com',
         role: 'admin',
         confirmation_token: '',
         password: await Hash.make('123456')

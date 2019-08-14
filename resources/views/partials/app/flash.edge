@@ -1,0 +1,35 @@
+@if( old('flash_info') )
+  <div class="alert alert-info">
+    {{ old('flash_info') }}
+
+    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+      <span aria-hidden="true">&times;</span>
+    </button>
+
+  </div>
+@endif
+
+@if( old('flash_error') )
+  <div class="alert alert-danger">
+    {{ old('flash_error') }}
+
+    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+      <span aria-hidden="true">&times;</span>
+    </button>
+
+  </div>
+@endif
+
+@if( old('errors') )
+  <div class="alert alert-danger">
+    @each( error in old('errors') )
+      <ul>
+        <li>{{ error.message }}</li>
+      </ul>
+    @endeach
+
+    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+@endif

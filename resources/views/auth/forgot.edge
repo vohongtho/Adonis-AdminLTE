@@ -12,7 +12,7 @@
       {{ csrfField() }}
 
       <div class="form-group has-feedback">
-        <input type="email" class="form-control" placeholder="Email">
+        <input type="email" class="form-control" name="email" placeholder="Email">
         <span class="glyphicon glyphicon-envelope form-control-feedback"></span>
       </div>
       <div class="row">
@@ -23,6 +23,8 @@
 
       </div>
     </form>
+    <a class="mt-2" href="{{ route('login') }}">Return login</a><br>
+
   </div>
   <!-- /.form-box -->
 </div>
