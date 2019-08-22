@@ -2,6 +2,7 @@
 @section('content')
 <section class="content">
   <div class="row">
+
     <div class="col-xs-12">
       <div class="box">
         <div class="box-header ui-sortable-handle" style="">
@@ -21,6 +22,7 @@
               <tr>
                 <th> Email</th>
                 <th>Full Name</th>
+                <th>Phone</th>
                 <th>Role</th>
                 <th> Last Login</th>
                 <th with="120px" class="text-center"> Action</th>
@@ -29,14 +31,14 @@
             <tbody>
               @if(users)
               @each( item in users )
-
               <tr>
                 <td>{{item.email}}</td>
                 <td>{{item.last_name}}</td>
+                <td>({{item.phone_code}}) {{item.phone_number}}</td>
                 <td>{{item.role}}</td>
                 <td>{{item.updated_at}}</td>
                 <td class="text-center">
-                  <a href="{{route('userEdit', { id: 1 })}}" class="btn btn-info btn-flat"><i
+                  <a href="{{route('userEdit', { id: item.id })}}" class="btn btn-info btn-flat"><i
                       class="fa  fa-pencil"></i></a>
                   <a class="btn btn-danger btn-flat"><i class="fa  fa-remove"></i></a>
                 </td>

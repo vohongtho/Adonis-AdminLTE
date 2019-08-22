@@ -6,9 +6,11 @@ const Auth = exports = module.exports = {}
 
 const app_from_title = Env.get('APP_FROM_TITLE')
 const app_from_email = Env.get('APP_FROM_EMAIL')
+const app_url = Env.get('APP_URL')
+
 
 Auth.signup = async (user) => {
-    
+
     await Mail.send('emails.welcome', { token: user.confirmation_token }, (message) => {
         message.from(`${app_from_title} <${app_from_email}>`)
         message.subject('Welcome to Adonis Starter')
@@ -45,7 +47,7 @@ Auth.resend_confirmation = async (user) => {
 
 Auth.forgot_password = async (user) => {
 
-    await Mail.send('emails.forgot', { token: user.reset_token }, (message) => {
+    await Mail.send('emails.forgot', { app_url:app_url, token: user.reset_token }, (message) => {
         message.from(`${app_from_title} <${app_from_email}>`)
         message.subject('Reset password')
         message.to(user.email)

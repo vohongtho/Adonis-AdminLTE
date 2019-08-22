@@ -39,8 +39,9 @@ class AuthController {
   }) {
 
     const data = request.only(['email', 'password', 'remember']);
+    const { email, password } = request.all()
 
-    const user = await User.findBy('email', data.email)
+    const user = await User.findBy('email', email)
     if (!user) {
       session.flash({
         flash_error: 'There\'s no account for the provided e-mail.'
@@ -55,7 +56,7 @@ class AuthController {
       return response.redirect('back')
     }
 
-    const math_password = await Hash.verify(data.password, user.password)
+    const math_password = await Hash.verify(password, user.password);
 
     if (!math_password) {
       session.flash({
@@ -66,8 +67,8 @@ class AuthController {
 
     try {
       await auth.login(user);
+      // await auth.generate(user);
       user.last_login = moment().format('YYYY-MM-D H:mm:ss'); // August 13th 2019, 3:19:18 pm
-
       await user.save();
       return response.route('root')
     } catch (e) {
@@ -146,21 +147,19 @@ class AuthController {
   }) {
 
     const data = request.only(['email'])
-
     const user = await User.findBy('email', data.email);
-    console.log(user);
-    // if (!user) {
-    //   session.flash({ flash_info: 'If the email you entered was right, in a minute you will receive the link to reset the password.' })
-    //   return response.redirect('back')
-    // }
+    if (!user) {
+      session.flash({ flash_error: 'If the email you entered was right, in a minute you will receive the link to reset the password.' })
+      return response.redirect('back')
+    }
 
-    // user.reset_token = uuid()
-    // await user.save()
+    user.reset_token = uuid()
+    await user.save()
 
-    // Event.fire('FORGOT_PASSWORD', user)
+    Event.fire('FORGOT_PASSWORD', user)
 
-    // session.flash({ flash_info: 'If the email you entered was right, in a minute you will receive the link to reset the password.' })
-    // return response.route('root')
+    session.flash({ flash_info: 'If the email you entered was right, in a minute you will receive the link to reset the password.' })
+    return response.route('root')
   }
 
   async reset_view({
@@ -194,21 +193,23 @@ class AuthController {
   }) {
 
     const data = request.only(['token', 'password'])
-
     const user = await User.findBy('reset_token', data.token)
     if (!user) {
       return response.route('root')
     }
+    user.password = await Hash.make('123456789')
+    // user.reset_token = null
+    try {
+      await user.save()
+    } catch (ex) {
+      Logger.error(ex.message);
+      return response.redirect('back');
 
-    user.password = await Hash.make(data.password)
-    user.reset_token = null
-    await user.save()
-
+    }
     session.flash({
       flash_info: 'Password has been changed.'
     })
     return response.route('root')
-
   }
 
   /**

@@ -57,7 +57,7 @@
                     <div class="col-xs-5">
 
 
-                      <select name="phoneCode"  class="form-control select2" style="width: 100%;">
+                      <select name="phoneCode" class="form-control select2" style="width: 100%;">
                         @each( item in phoneCode )
                         <option {{item.dial_code ==user.phone_code?'selected':''}} value="{{item.dial_code}}">
                           ({{item.dial_code}}) {{item.name}}</option>
@@ -84,7 +84,9 @@
             <!-- tools box -->
             <div class="pull-right box-tools">
 
-                <button type="submit" class="btn btn-block btn-success btn-flat">Save</button>
+              <button type="submit" class="btn btn-block btn-success btn-flat">
+                <i class="fa fa-save"></i>
+                Save</button>
 
             </div>
             <!-- /. tools -->

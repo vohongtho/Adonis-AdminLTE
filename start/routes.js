@@ -29,12 +29,13 @@ Route.on('/forgot').render('auth.forgot').as('forgot');
 Route.on('/login').render('auth.login').as('login');
 Route.get('/logout', 'AuthController.logout').as('logout');
 Route.get('/not_found', 'ErrorController.index').as('not_found');
+Route.get('/reset/:token', 'AuthController.reset_view').as('reset')
 
 Route.group(() => {
   Route.post('/signup', 'AuthController.signup').as('auth.signup').validator('auth/Signup');
   Route.post('/login', 'AuthController.login').as('auth.login').validator('auth/Login');
   Route.post('/resend', 'AuthController.resend').as('auth.resend').validator('auth/Resend');
-  Route.post('/forgot', 'AuthController.forgot').as('auth.forgot');
+  Route.post('/forforgotforgotgot', 'AuthController.forgot').as('auth.forgot');
   Route.post('/reset', 'AuthController.reset').as('auth.reset').validator('auth/Reset');
 }).prefix('auth');
 

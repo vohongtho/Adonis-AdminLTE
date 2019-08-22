@@ -3,6 +3,7 @@ let BaseController = require("../BaseController");
 
 const Route = use('Route');
 const Logger = use('Logger');
+
 const User = use('App/Models/User');
 const {
   validate
@@ -15,10 +16,7 @@ class UserController extends BaseController {
     session,
     view
   }) {
-
-    // console.log(route);
-
-    var breadcrumb = [{
+    let breadcrumb = [{
         name: 'Home',
         url: Route.url('/'),
         icon: 'fa-dashboard',
@@ -34,8 +32,6 @@ class UserController extends BaseController {
       }
     ];
     //url: Route.url('User/UserController.manage'),
-
-
     view.share({
       title: 'Users',
       breadcrumb: breadcrumb
@@ -105,13 +101,18 @@ class UserController extends BaseController {
       response.redirect('not_found');
     }
     let user = await this._validateData(params.id);
-
     if (request.method() == 'POST') {
       const data = request.only(['lastName', 'phoneCode', 'phoneNumber']);
       user.last_name = data.lastName;
       user.phone_code = data.phoneCode;
       user.phone_number = data.phoneNumber;
-      user.save();
+      try {
+        await user.save();
+      } catch (ex) {
+        Logger.error(ex.message);
+
+      }
+      // await user.save();
       // const rules = {
       //   lastName: 'required',
       //   phoneCode: 'required',
@@ -127,15 +128,15 @@ class UserController extends BaseController {
       // }
 
     }
+    let phoneCode = await this.phoneCode();
     return view.render('User.edit', {
-      phoneCode: await this.phoneCode(),
-      user: user
+      phoneCode,
+      user
     });
   }
   async _validateData(id) {
     if (!id) {
       throw new Error('Invalid User ID');
-
     }
     let user = await User.query().where('id', '=', id).first();
     // return user;

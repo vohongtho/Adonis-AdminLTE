@@ -1,0 +1,35 @@
+@layout('layouts/auth')
+@section('content')
+<div class="login-box">
+  <div class="login-logo">
+    <a href="{{ route('/') }}"><b>Admin</b>LTE</a>
+  </div>
+  <!-- /.login-logo -->
+  <div class="login-box-body">
+    <p class="login-box-msg">Reset password</p>
+
+    <form class="form-signin" method="POST" action="{{ route('auth.reset') }}">
+      {{ csrfField() }}
+      <input type="hidden" name="token" value="{{ token }}" />
+
+
+      <div class="form-group has-feedback">
+        <input type="password" class="form-control" autocomplete="off" placeholder="Password" value="123456" required
+          id="password" name="password">
+        <span class="glyphicon glyphicon-lock form-control-feedback"></span>
+      </div>
+      <div class="row">
+
+        <!-- /.col -->
+        <div class="col-xs-12">
+          <button type="submit" class="btn btn-block btn-success btn-flat">Sign In</button>
+        </div>
+        <!-- /.col -->
+      </div>
+
+    </form>
+    <!-- /.social-auth-links -->
+  </div>
+  <!-- /.login-box-body -->
+</div>
+@endsection

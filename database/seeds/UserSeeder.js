@@ -32,7 +32,6 @@ class UserSeeder {
       }
     ])
 
-    console.log(user)
   }
 }
 

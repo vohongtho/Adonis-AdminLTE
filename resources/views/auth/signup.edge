@@ -1,0 +1,26 @@
+@layout('layouts/auth')
+
+@section('content')
+
+<h4 class="text-center login-title">SIGN UP</h4>
+  <form class="form-signin" method="POST" action="{{ route('auth.signup') }}">
+
+    {{ csrfField() }}
+
+      <label type="email">First Name*</label>
+      <input type="text" class="form-control" required id="first_name" name="first_name"></input>
+
+      <label type="email">Last Name*</label>
+      <input type="text" class="form-control" required id="last_name" name="last_name"></input>
+
+      <label type="email">Email*</label>
+      <input type="email" class="form-control" required id="email" name="email"></input>
+
+      <label type="password">Password*</label>
+      <input type="password" class="form-control" required id="password" name="password"></input>
+
+      <input type="submit" class="btn btn-lg btn-success btn-block mt-2" value="Sign Up"></input>
+
+  </form>
+
+@endsection
